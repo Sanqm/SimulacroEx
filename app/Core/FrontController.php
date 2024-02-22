@@ -209,23 +209,27 @@ class FrontController {
 
         /* login */
 
-     
-            Route::add('/login',
-                    function () {
-                        $controlador = new \Com\Daw2\Controllers\UsuariosController();
-                        $controlador->showLogin();
-                    }
-                    , 'get');
 
-            Route::add('/login',
-                    function () {
-                        $controlador = new \Com\Daw2\Controllers\UsuariosController();
-                        $controlador->procesLogin();
-                    }
-                    , 'post');
+        Route::add('/login',
+                function () {
+                    $controlador = new \Com\Daw2\Controllers\UsuariosController();
+                    $controlador->showLogin();
+                }
+                , 'get');
+if(!isset($_SESSION['user'])){
+        Route::add('/login',
+                function () {
+                    $controlador = new \Com\Daw2\Controllers\UsuariosController();
+                    $controlador->procesLogin();
+                }
+                , 'post');
 
-
-
+        Route::pathNotFound(
+                function () {
+                    header('location: /login');
+                }
+        );
+}
         Route::pathNotFound(
                 function () {
                     $controller = new \Com\Daw2\Controllers\ErroresController();

@@ -11,14 +11,17 @@
                 </div>
                 <div class="col-6">
                     <div class="m-0 font-weight-bold justify-content-end">
-                        <a href="/usuarios-sistema" class="btn btn-primary ml-1 float-right"> Nuevo Usuario del Sistema <i class="fas fa-plus-circle"></i></a>
+                        <a href="/usuarios-sistema/add" class="btn btn-primary ml-1 float-right"> Nuevo Usuario del Sistema <i class="fas fa-plus-circle"></i></a>
                     </div>
+
                 </div>
-                <div class="cols-6">
-                    <label>Username
-                        <input type="text" name="username">
-                </div>
+             
             </div>
+             <div class="col-6">
+                    <label>Username:
+                    <input type="text" name="usuario_name" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+                     <a href="/usuarios-sistema" class="btn btn-primary ml-1 float-right">Buscar<i class="fas fa-plus-circle"></i></a>
+                </div>
             <!-- Card Body -->
             <div class="card-body" id="card_table">
                 <div id="button_container" class="mb-3"></div>
@@ -34,18 +37,18 @@
                     <tbody>
                         <?php foreach ($usuarios as $usu) { ?>
                             <tr>
-                               <td><?php  echo $usu['username']?></td>
-                               <td><?php  echo $usu['email']?></td>
-                               <td><?php  echo $usu['nombre_rol']?></td>
-                               <td>
-                                <a href="/usuarios-sistema/view/<?php echo $usu['username']; ?>" class="btn btn-default ml-1"><i class="fas fa-eye"></i></a>                                
-                                <a href="/usuarios-sistema/edit/<?php echo $usu['email']; ?>" class="btn btn-success ml-1"><i class="fas fa-edit"></i></a>
-                                <a href="/usuarios-sistema/delete/<?php echo $usu['nombre_rol']; ?>" class="btn btn-danger ml-1"><i class="fas fa-trash"></i></a>
-                            </td>
-                            <?php }?>
-                          <td>                                
-                               
-       
+                                <td><?php echo $usu['username'] ?></td>
+                                <td><?php echo $usu['email'] ?></td>
+                                <td><?php echo $usu['nombre_rol'] ?></td>
+                                <td>
+                                    <a href="/usuarios-sistema/view/<?php echo $usu['username']; ?>" class="btn btn-default ml-1"><i class="fas fa-eye"></i></a>                                
+                                    <a href="/usuarios-sistema/edit/<?php echo $usu['email']; ?>" class="btn btn-success ml-1"><i class="fas fa-edit"></i></a>
+                                    <a href="/usuarios-sistema/delete/<?php echo $usu['nombre_rol']; ?>" class="btn btn-danger ml-1"><i class="fas fa-trash"></i></a>
+                                </td>
+                            <?php } ?>
+                            <td>                                
+
+
                     </tbody>
                     <tfoot>
                         Total de registros: 3                       
