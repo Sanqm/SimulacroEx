@@ -22,15 +22,24 @@ class UsuariosModel extends \Com\Daw2\Core\BaseModel {
         return $stmt->fetchAll();
     }
     
-    function getFiltros( string  $username ):?array{
-        $query = self::SELEC_FROM ."where username=:username";
-        $stmt=$this->pdo->prepare($query);
-        $stmt->execute([$username]);
-        if($row = $stmt->execute){
+//    function (array $filtros ):?array{
+//        $condiciones =[];
+//        $vars = [];
+//       $query= self::SELEC_FROM;
+//       
+//       
+//    }
+//    
+    
+    function getByEmail(array $data):?array{
+        $query = self::SELEC_FROM . " where email=?";
+        $stmt= $this->pdo->prepare($query);
+        $tmt->execute([$data['email']]);
+        if($row = $stmt->fetch()){
             return $row;
         }else{
             return null;
         }
+        
     }
-    
 }

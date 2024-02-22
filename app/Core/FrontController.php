@@ -14,28 +14,28 @@ class FrontController {
                     $controlador->index();
                 }
                 , 'get');
-                
+
         //Demos
         Route::add('/demos/usuarios-sistema',
                 function () {
                     $controlador = new \Com\Daw2\Controllers\InicioController();
                     $controlador->demoUsuariosSistema();
                 }
-                , 'get');        
-                
+                , 'get');
+
         Route::add('/demos/usuarios-sistema/add',
                 function () {
                     $controlador = new \Com\Daw2\Controllers\InicioController();
                     $controlador->demoUsuariosSistemaAdd();
                 }
-                , 'get'); 
-                
+                , 'get');
+
         Route::add('/demos/login',
                 function () {
                     $controlador = new \Com\Daw2\Controllers\InicioController();
                     $controlador->demoLogin();
                 }
-                , 'get'); 
+                , 'get');
 
         # Gestion de categorías
         Route::add('/categorias',
@@ -93,8 +93,7 @@ class FrontController {
                     $controlador->cant_add();
                 }
                 , 'get');
-                
-                
+
         //Produtos        
         Route::add('/productos',
                 function () {
@@ -143,8 +142,7 @@ class FrontController {
                     $controlador->processAdd();
                 }
                 , 'post');
-                
-                
+
         //Proveedores
         Route::add('/proveedores',
                 function () {
@@ -166,7 +164,7 @@ class FrontController {
                     $controlador->delete($cif);
                 }
                 , 'get');
- 
+
         Route::add('/proveedores/edit/([A-Za-z0-9]+)',
                 function ($cif) {
                     $controlador = new \Com\Daw2\Controllers\ProveedorController();
@@ -201,14 +199,32 @@ class FrontController {
                     $controlador->cant_add();
                 }
                 , 'get');
-                
+
         Route::add('/usuarios-sistema',
                 function () {
                     $controlador = new \Com\Daw2\Controllers\UsuariosController();
                     $controlador->mostrarTodosUsuarios();
                 }
                 , 'get');
-        
+
+        /* login */
+
+     
+            Route::add('/login',
+                    function () {
+                        $controlador = new \Com\Daw2\Controllers\UsuariosController();
+                        $controlador->showLogin();
+                    }
+                    , 'get');
+
+            Route::add('/login',
+                    function () {
+                        $controlador = new \Com\Daw2\Controllers\UsuariosController();
+                        $controlador->procesLogin();
+                    }
+                    , 'post');
+
+
 
         Route::pathNotFound(
                 function () {
@@ -224,10 +240,6 @@ class FrontController {
                 }
         );
 
-
-
-
         Route::run();
     }
-
 }
